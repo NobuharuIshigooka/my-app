@@ -10,6 +10,7 @@
 - **Tailwind CSS v4** （新しいPostCSSプラグインアプローチを使用）
 - **App Router** アーキテクチャ（Pages Routerではありません）
 - **ESLint** （Next.js推奨設定）
+- **Supabase** （Dockerを使用しない設定 - 方法１）
 
 ## 開発コマンド
 
@@ -53,6 +54,12 @@ npm run lint
 - `next/font/google` を使用したNext.jsフォント最適化
 - フォント：Geist（sans）とGeist Mono、latinサブセットで読み込み
 - フォント変数はlayout.tsx:5-13でCSS変数として注入
+
+### Supabase設定
+このプロジェクトではSupabaseをバックエンドとして使用しています：
+- **Dockerを使用しない設定（方法１）** を採用
+- 詳細な使い方とセットアップ手順は `.claude/supabase_document.md` を参照
+- Supabaseのクライアント設定やAPI使用方法については、上記ドキュメントを確認してください
 
 ## 主要パターン
 
