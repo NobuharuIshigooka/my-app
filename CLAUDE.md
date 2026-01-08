@@ -70,6 +70,14 @@ npm run lint
 - 詳細な実装手順、設定方法、使用方法は `.claude/clerk_document.md` を参照
 - 認証や課金機能を実装する際は、必ず上記ドキュメントのガイドラインに従ってください
 
+### Clerk と Supabase の連携
+このプロジェクトではClerkの認証とSupabaseのデータベースを統合して使用します：
+- ClerkのユーザーIDをSupabaseのテーブルと紐付ける方法
+- Row Level Security (RLS) ポリシーの設定
+- ClerkのJWTトークンをSupabaseで検証する方法
+- 詳細な連携手順と実装パターンは `.claude/clerk_supabase_integration_document` を参照
+- 認証とデータベースを連携させる機能を実装する際は、必ず上記ドキュメントを確認してください
+
 ## 主要パターン
 
 ### コンポーネントアーキテクチャ
