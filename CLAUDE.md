@@ -50,6 +50,7 @@ npm run lint
 - PostCSSプラグイン `@tailwindcss/postcss` を使用
 - ダークモードは `prefers-color-scheme` メディアクエリで処理
 - テーマ用カスタムCSS変数：`--background`、`--foreground`、`--font-geist-sans`、`--font-geist-mono`
+- 詳細なセットアップ手順、カスタマイズ方法、使用方法は `.claude/tailwind_document.md` を参照
 
 ### フォント読み込み
 - `next/font/google` を使用したNext.jsフォント最適化
