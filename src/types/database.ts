@@ -56,14 +56,17 @@ export interface ExpenseUpdate {
 // ===================================
 // データベース全体の型定義
 // ===================================
-export interface Database {
+export type Database = {
   public: {
     Tables: {
       expenses: {
         Row: Expense;
-        Insert: ExpenseInsert;
+        Insert: Omit<Expense, "id" | "created_at" | "updated_at">;
         Update: ExpenseUpdate;
       };
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
   };
-}
+};

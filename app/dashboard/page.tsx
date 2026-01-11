@@ -1,5 +1,10 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { MainLayout } from "@/components/layout/MainLayout";
+import { Container } from "@/components/layout/Container";
+import { ExpenseForm } from "@/components/expenses/ExpenseForm";
+import { MonthlySummary } from "@/components/expenses/MonthlySummary";
+import { RecentExpenses } from "@/components/expenses/RecentExpenses";
 
 export default async function DashboardPage() {
   const { userId } = await auth();
@@ -12,28 +17,30 @@ export default async function DashboardPage() {
   const user = await currentUser();
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="rounded-2xl bg-white p-8 shadow-md">
-          <h1 className="text-3xl font-bold text-gray-900">ダッシュボード</h1>
-          <p className="mt-2 text-gray-600">
-            ようこそ、{user?.firstName || user?.emailAddresses[0]?.emailAddress} さん
-          </p>
-
-          <div className="mt-8 rounded-lg bg-blue-50 p-6">
-            <h2 className="text-xl font-semibold text-blue-900">
-              認証システムが正常に動作しています
-            </h2>
-            <p className="mt-2 text-blue-700">
-              このページは認証が必要なページです。ログインに成功しました。
+    <MainLayout>
+      <Container>
+        <div className="space-y-8">
+          {/* ウェルカムメッセージ */}
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">ダッシュボード</h1>
+            <p className="mt-2 text-lg text-gray-600">
+              ようこそ、{user?.firstName || user?.emailAddresses[0]?.emailAddress} さん
             </p>
           </div>
 
-          <div className="mt-6 text-sm text-gray-500">
-            <p>ユーザーID: {userId}</p>
+          {/* 2カラムレイアウト: 支出記録フォームと今月の支出 */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* 支出記録フォーム */}
+            <ExpenseForm />
+
+            {/* 今月の支出サマリー */}
+            <MonthlySummary />
           </div>
+
+          {/* 最近の支出一覧 */}
+          <RecentExpenses />
         </div>
-      </div>
-    </div>
+      </Container>
+    </MainLayout>
   );
 }

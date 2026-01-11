@@ -123,3 +123,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Clerkコンポーネントのz-index調整 */
+/* UserButtonのモーダルが他の要素の下に隠れないようにする */
+.cl-userButtonPopoverCard,
+.cl-userButtonPopoverActionButton,
+.cl-profileSectionPrimaryButton,
+.cl-userProfile,
+.cl-userProfilePopoverCard,
+.cl-modal,
+.cl-modalBackdrop,
+.cl-modalContent {
+  z-index: 9999 !important;
+}
