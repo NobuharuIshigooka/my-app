@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TrendingUp, Loader2 } from "lucide-react";
-import { Expense } from "@/types/database";
+import { TrendingUp } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface CategoryTotal {
   category: string;
@@ -50,8 +50,20 @@ export function MonthlySummary() {
             今月の支出
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex justify-center py-8">
-          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        <CardContent className="space-y-4">
+          {/* スケルトンローディング */}
+          <div className="rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 p-4">
+            <Skeleton className="h-4 w-16 bg-gray-200" />
+            <Skeleton className="mt-2 h-8 w-32 bg-gray-300" />
+          </div>
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-24 bg-gray-200" />
+            <div className="space-y-1">
+              <Skeleton className="h-10 w-full bg-gray-100" />
+              <Skeleton className="h-10 w-full bg-gray-100" />
+              <Skeleton className="h-10 w-full bg-gray-100" />
+            </div>
+          </div>
         </CardContent>
       </Card>
     );

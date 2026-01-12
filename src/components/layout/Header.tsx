@@ -25,6 +25,12 @@ export function Header() {
               ダッシュボード
             </Link>
             <Link
+              href="/history"
+              className="hidden text-sm font-semibold text-gray-700 transition-colors hover:text-blue-700 sm:block"
+            >
+              支出履歴
+            </Link>
+            <Link
               href="/pricing"
               className="hidden text-sm font-semibold text-gray-700 transition-colors hover:text-blue-700 sm:block"
             >

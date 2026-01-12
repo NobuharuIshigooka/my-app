@@ -6,7 +6,8 @@
       "Bash(npx shadcn@latest init:*)",
       "Bash(npx shadcn@latest add button card input label select form dialog dropdown-menu toast)",
       "Bash(npx shadcn@latest add button card input label select form dialog dropdown-menu sonner)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(npx shadcn@latest add progress)"
     ],
     "deny": [],
     "ask": []

@@ -4,6 +4,8 @@ import { MainLayout } from "@/components/layout/MainLayout";
 import { Container } from "@/components/layout/Container";
 import { ExpenseForm } from "@/components/expenses/ExpenseForm";
 import { MonthlySummary } from "@/components/expenses/MonthlySummary";
+import { WeeklySummary } from "@/components/expenses/WeeklySummary";
+import { CategoryBreakdown } from "@/components/expenses/CategoryBreakdown";
 import { RecentExpenses } from "@/components/expenses/RecentExpenses";
 
 export default async function DashboardPage() {
@@ -28,17 +30,26 @@ export default async function DashboardPage() {
             </p>
           </div>
 
-          {/* 2カラムレイアウト: 支出記録フォームと今月の支出 */}
+          {/* 支出記録フォーム */}
+          <ExpenseForm />
+
+          {/* 2カラムレイアウト: 今週の支出と今月の支出 */}
           <div className="grid gap-6 lg:grid-cols-2">
-            {/* 支出記録フォーム */}
-            <ExpenseForm />
+            {/* 今週の支出サマリー */}
+            <WeeklySummary />
 
             {/* 今月の支出サマリー */}
             <MonthlySummary />
           </div>
 
-          {/* 最近の支出一覧 */}
-          <RecentExpenses />
+          {/* 2カラムレイアウト: カテゴリー別支出と最近の支出 */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* カテゴリー別支出 */}
+            <CategoryBreakdown />
+
+            {/* 最近の支出一覧 */}
+            <RecentExpenses />
+          </div>
         </div>
       </Container>
     </MainLayout>

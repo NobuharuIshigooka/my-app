@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Receipt, Loader2 } from "lucide-react";
+import { Receipt } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Expense } from "@/types/database";
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
@@ -49,8 +50,40 @@ export function RecentExpenses({ onUpdate }: RecentExpensesProps) {
             最近の支出
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex justify-center py-8">
-          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        <CardContent>
+          {/* スケルトンローディング - テーブル形式 */}
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-200">
+                  <th className="pb-3 text-left">
+                    <Skeleton className="h-4 w-16 bg-gray-200" />
+                  </th>
+                  <th className="pb-3 text-left">
+                    <Skeleton className="h-4 w-20 bg-gray-200" />
+                  </th>
+                  <th className="pb-3 text-right">
+                    <Skeleton className="ml-auto h-4 w-12 bg-gray-200" />
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...Array(5)].map((_, i) => (
+                  <tr key={i} className="border-b border-gray-100">
+                    <td className="py-3">
+                      <Skeleton className="h-4 w-24 bg-gray-100" />
+                    </td>
+                    <td className="py-3">
+                      <Skeleton className="h-6 w-20 rounded-full bg-gray-100" />
+                    </td>
+                    <td className="py-3">
+                      <Skeleton className="ml-auto h-4 w-16 bg-gray-100" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </CardContent>
       </Card>
     );
