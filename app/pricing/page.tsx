@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
+import { DynamicPricingTable } from "@/components/pricing/DynamicPricingTable";
 
 export default function PricingPage() {
   const plans = [
@@ -29,7 +30,7 @@ export default function PricingPage() {
     },
     {
       name: "プレミアムプラン",
-      price: "¥500",
+      price: "$10",
       period: "月額",
       description: "高度な分析機能で支出を深く理解できます",
       features: [
@@ -43,7 +44,7 @@ export default function PricingPage() {
         { name: "CSV エクスポート", included: true },
       ],
       cta: "プレミアムを始める",
-      ctaLink: "/sign-up",
+      ctaLink: "#subscribe",
       variant: "default" as const,
       highlighted: true,
     },
@@ -129,6 +130,16 @@ export default function PricingPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Clerk Billing PricingTable - Stripe決済 */}
+          <div className="mt-16" id="subscribe">
+            <h2 className="animate-in fade-in slide-in-from-bottom-4 mb-8 text-center text-3xl font-bold text-gray-900 duration-700">
+              プランを選択して今すぐ始める
+            </h2>
+            <div className="animate-in fade-in zoom-in duration-700 delay-200">
+              <DynamicPricingTable />
+            </div>
           </div>
 
           {/* よくある質問 */}

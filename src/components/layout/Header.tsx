@@ -31,6 +31,12 @@ export function Header() {
               支出履歴
             </Link>
             <Link
+              href="/analytics"
+              className="hidden text-sm font-semibold text-gray-700 transition-colors hover:text-blue-700 sm:block"
+            >
+              分析
+            </Link>
+            <Link
               href="/pricing"
               className="hidden text-sm font-semibold text-gray-700 transition-colors hover:text-blue-700 sm:block"
             >

@@ -30,15 +30,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // 日付をISO形式のタイムスタンプに変換
+    // dateが指定されている場合はそれを使用、なければ現在時刻
+    let createdAt: string;
+    if (date) {
+      // "YYYY-MM-DD" 形式の文字列をDateオブジェクトに変換
+      // 時刻は0時0分0秒に設定
+      const dateObj = new Date(date + "T00:00:00");
+      createdAt = dateObj.toISOString();
+    } else {
+      createdAt = new Date().toISOString();
+    }
+
     // Supabaseに挿入
-    // 注: created_atはデフォルト値(NOW())が設定されているため、
-    // カスタム日付が必要な場合は別途実装が必要です
     const { data, error } = await supabase
       .from("expenses")
       .insert({
         user_id: userId,
         amount: parseFloat(amount),
         category,
+        created_at: createdAt,
       } as any) // 型の問題を回避するためにanyを使用
       .select()
       .single();

@@ -167,7 +167,11 @@ export function ExpenseForm({ onSuccess }: ExpenseFormProps) {
                     <Input
                       type="date"
                       className="h-12 shadow-sm"
-                      {...field}
+                      value={field.value || ""}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      ref={field.ref}
                     />
                   </FormControl>
                   <FormMessage />
