@@ -32,11 +32,11 @@ export function PeriodComparison({
   const isStable = trend === "stable";
 
   return (
-    <Card className="border-2 border-gray-200 shadow-md transition-shadow hover:shadow-lg">
-      <CardHeader>
-        <CardTitle className="text-lg text-gray-900">前期間比較</CardTitle>
+    <Card className="overflow-hidden border-2 border-gray-200 shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+      <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
+        <CardTitle className="text-lg font-semibold text-gray-900">前期間比較</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 bg-white">
         {/* 現在の期間 */}
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-600">{labels.current}</span>

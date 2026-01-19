@@ -126,14 +126,21 @@ export function PremiumAnalytics() {
   // プレミアムプランではない場合
   if (!isPremium) {
     return (
-      <Card className="border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl text-gray-900">
-            <Lock className="h-6 w-6 text-blue-600" />
-            プレミアム機能
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
+      <Card className="overflow-hidden border-2 border-blue-200 shadow-xl transition-all duration-200 hover:shadow-2xl">
+        <div className="relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 p-8">
+          <CardHeader className="relative z-10 p-0">
+            <CardTitle className="flex items-center gap-3 text-2xl font-bold text-white">
+              <div className="rounded-full bg-white p-2 shadow-lg">
+                <Lock className="h-6 w-6 text-blue-600" />
+              </div>
+              プレミアム機能
+            </CardTitle>
+          </CardHeader>
+          {/* 装飾的な背景パターン */}
+          <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-blue-400 opacity-20 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-purple-400 opacity-20 blur-3xl"></div>
+        </div>
+        <CardContent className="space-y-6 bg-white p-8">
           <div className="space-y-4">
             <div className="flex items-start gap-3">
               <Sparkles className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
@@ -172,11 +179,15 @@ export function PremiumAnalytics() {
             </div>
           </div>
 
-          <div className="rounded-lg border-2 border-blue-200 bg-white p-6 text-center">
-            <p className="mb-4 text-lg font-semibold text-gray-900">
+          <div className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 text-center shadow-inner">
+            <p className="mb-6 text-xl font-bold text-gray-900">
               月額 $10 でプレミアム機能を利用できます
             </p>
-            <Button asChild size="lg" className="shadow-md hover:shadow-lg">
+            <Button
+              asChild
+              size="lg"
+              className="h-14 bg-gradient-to-r from-blue-600 to-indigo-600 px-8 text-lg font-semibold shadow-lg transition-all duration-200 hover:scale-105 hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl"
+            >
               <Link href="/pricing">プレミアムプランを見る</Link>
             </Button>
           </div>
@@ -201,14 +212,29 @@ export function PremiumAnalytics() {
 
   return (
     <div className="space-y-6">
-      {/* 期間切り替えタブ */}
-      <Card className="border-2 border-gray-200 shadow-md">
-        <CardContent className="pt-6">
+      {/* 期間切り替えタブ - プレミアムデザイン */}
+      <Card className="overflow-hidden border-2 border-gray-200 shadow-lg transition-all duration-200 hover:shadow-xl">
+        <CardContent className="bg-gradient-to-r from-blue-50 to-indigo-50 pt-6">
           <Tabs value={period} onValueChange={(value) => setPeriod(value as Period)}>
-            <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="daily">日次</TabsTrigger>
-              <TabsTrigger value="weekly">週次</TabsTrigger>
-              <TabsTrigger value="monthly">月次</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 bg-white shadow-md">
+              <TabsTrigger
+                value="daily"
+                className="font-semibold transition-all duration-200 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600"
+              >
+                日次
+              </TabsTrigger>
+              <TabsTrigger
+                value="weekly"
+                className="font-semibold transition-all duration-200 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600"
+              >
+                週次
+              </TabsTrigger>
+              <TabsTrigger
+                value="monthly"
+                className="font-semibold transition-all duration-200 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600"
+              >
+                月次
+              </TabsTrigger>
             </TabsList>
           </Tabs>
         </CardContent>
@@ -232,21 +258,25 @@ export function PremiumAnalytics() {
         <ExpenseTrendChart data={trendData} period={period} />
       </div>
 
-      {/* 追加機能の案内 */}
-      <Card className="border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50 shadow-md">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-3">
-            <Sparkles className="h-6 w-6 text-green-600" />
+      {/* プレミアム利用中バッジ */}
+      <Card className="overflow-hidden border-2 border-green-200 shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+        <div className="relative bg-gradient-to-r from-green-600 to-emerald-600 p-6">
+          <div className="relative z-10 flex items-center gap-3">
+            <div className="rounded-full bg-white p-2 shadow-md">
+              <Sparkles className="h-6 w-6 text-green-600" />
+            </div>
             <div>
-              <h3 className="font-semibold text-gray-900">
+              <h3 className="font-bold text-white">
                 プレミアム機能をご利用中です
               </h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-green-50">
                 グラフ分析、期間別比較、CSVエクスポートがご利用いただけます
               </p>
             </div>
           </div>
-        </CardContent>
+          {/* 装飾的な背景パターン */}
+          <div className="absolute right-0 top-0 -mr-8 -mt-8 h-32 w-32 rounded-full bg-green-400 opacity-20 blur-2xl"></div>
+        </div>
       </Card>
     </div>
   );

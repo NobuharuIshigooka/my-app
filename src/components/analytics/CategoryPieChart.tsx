@@ -34,14 +34,14 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
   // データが空の場合
   if (data.length === 0) {
     return (
-      <Card className="border-2 border-gray-300 shadow-md">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-gray-900">
-            <PieChartIcon className="h-5 w-5 text-purple-500" />
+      <Card className="overflow-hidden border-2 border-gray-200 shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+        <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50">
+          <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+            <PieChartIcon className="h-5 w-5 text-purple-600" />
             カテゴリ別割合
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex h-80 items-center justify-center">
+        <CardContent className="flex h-80 items-center justify-center bg-white">
           <p className="text-gray-500">データがありません</p>
         </CardContent>
       </Card>
@@ -49,14 +49,14 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
   }
 
   return (
-    <Card className="border-2 border-gray-300 shadow-md">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-gray-900">
-          <PieChartIcon className="h-5 w-5 text-purple-500" />
+    <Card className="overflow-hidden border-2 border-gray-200 shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+      <CardHeader className="bg-gradient-to-br from-purple-50 to-pink-50">
+        <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+          <PieChartIcon className="h-5 w-5 text-purple-600" />
           カテゴリ別割合
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="bg-white">
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
             <Pie

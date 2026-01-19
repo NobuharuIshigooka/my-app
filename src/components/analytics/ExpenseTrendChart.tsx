@@ -34,10 +34,10 @@ export function ExpenseTrendChart({ data, period }: ExpenseTrendChartProps) {
   const average = data.length > 0 ? total / data.length : 0;
 
   return (
-    <Card className="border-2 border-gray-200 shadow-md transition-shadow hover:shadow-lg">
-      <CardHeader>
+    <Card className="overflow-hidden border-2 border-gray-200 shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+      <CardHeader className="bg-gradient-to-br from-blue-50 to-cyan-50">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-lg text-gray-900">
+          <CardTitle className="flex items-center gap-2 text-lg font-semibold text-gray-900">
             <TrendingUp className="h-5 w-5 text-blue-600" />
             支出推移
           </CardTitle>
@@ -49,7 +49,7 @@ export function ExpenseTrendChart({ data, period }: ExpenseTrendChartProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="bg-white">
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
